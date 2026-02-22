@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+}
+
+const { title = 'Windows 95 Browser OS' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Windows 95 Browser OS - A fully functional recreation of Windows 95 that runs in your browser" />
+    <meta name="theme-color" content="#008080" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23008080'/%3E%3Ctext x='50' y='65' font-size='50' text-anchor='middle'%3E%F0%9F%AA%9F%3C/text%3E%3C/svg%3E" />
+    <title>{title}</title>
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Windows 95 Browser OS" />
+    <meta property="og:description" content="A fully functional recreation of Windows 95 that runs in your browser" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Prevent phone number detection -->
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Mobile web app capable -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Win95 OS" />
+    
+    <style is:global>
+      /* Prevent pull-to-refresh on mobile */
+      html, body {
+        overscroll-behavior: none;
+        touch-action: none;
+      }
+      
+      /* Prevent text selection during drag */
+      .no-select {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* Custom scrollbar for webkit browsers */
+      ::-webkit-scrollbar {
+        width: 16px;
+        height: 16px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #c0c0c0;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: #c0c0c0;
+        border-top: 2px solid #ffffff;
+        border-left: 2px solid #ffffff;
+        border-right: 2px solid #000000;
+        border-bottom: 2px solid #000000;
+      }
+      
+      ::-webkit-scrollbar-button:single-button {
+        background: #c0c0c0;
+        border-top: 2px solid #ffffff;
+        border-left: 2px solid #ffffff;
+        border-right: 2px solid #000000;
+        border-bottom: 2px solid #000000;
+        height: 16px;
+        width: 16px;
+      }
+      
+      /* Animation for CRT effect */
+      @keyframes scanline {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(4px); }
+      }
+      
+      /* Boot screen cursor blink */
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+      }
+      
+      .animate-blink {
+        animation: blink 1s infinite;
+      }
+    </style>
+  </head>
+  <body class="no-select">
+    <slot />
+  </body>
+</html>
