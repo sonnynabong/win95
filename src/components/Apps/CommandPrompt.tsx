@@ -341,13 +341,7 @@ export const CommandPrompt: React.FC<CommandPromptProps> = ({ fileSystem }) => {
       className="flex flex-col h-full bg-black font-mono text-sm"
       onClick={() => inputRef.current?.focus()}
     >
-      {/* Title Bar Area */}
-      <div className="bg-gray-400 text-black px-2 py-1 text-xs border-b border-gray-500 flex justify-between items-center select-none">
-        <span>C:\\WINDOWS\\COMMAND.COM</span>
-        <span>_ □ ×</span>
-      </div>
-
-      {/* Output Area */}
+      {/* Output Area -- Window component provides the title bar */}
       <div 
         ref={outputRef}
         className="flex-1 p-2 overflow-auto text-gray-300"
